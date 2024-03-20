@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Navigation Menu</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Light gray background color */
+            transition: background-color 0.3s ease;
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333; /* Dark gray navigation bar */
+            padding: 15px 0;
+            text-align: center;
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        #navbar a {
+            text-decoration: none;
+            color: white;
+            padding: 14px 16px;
+            display: inline-block;
+            transition: color 0.3s ease;
+            font-size: 16px; /* Larger font size */
+            font-weight: bold; /* Bold text */
+        }
+
+        #navbar a:hover {
+            color: #ff6f61; /* Light red hover text color */
+        }
+
+        section {
+            margin-top: 100px; /* Ensure content is not hidden behind the fixed navbar */
+            padding: 20px; /* Add padding for content */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow effect */
+            border-radius: 10px; /* Rounded corners */
+            text-align: center; /* Center align text */
+            transition: background-color 0.3s ease;
+        }
+
+        section h2 {
+            margin-bottom: 20px; /* Add space below section title */
+        }
+
+        section p {
+            line-height: 1.6; /* Increase line height for better readability */
+        }
+
+        /* Themes */
+        .theme1 {
+            background-color: #fff;
+            color: #333;
+        }
+
+        .theme2 {
+            background-color: #f9f9f9;
+            color: #555;
+        }
+
+        .theme3 {
+            background-color: #d3d3d3;
+            color: #222;
+        }
+    </style>
+</head>
+<body>
+
+<div id="navbar">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <button onclick="changeTheme()">Change Theme</button>
+</div>
+
+<section id="home" class="theme1">
+    <h2>Welcome to Our Website!</h2>
+    <p>This is the home section. Feel free to explore.</p>
+</section>
+
+<section id="about" class="theme2">
+    <h2>About Us</h2>
+    <p>Learn more about our company and mission.</p>
+</section>
+
+<section id="services" class="theme3">
+    <h2>Our Services</h2>
+    <p>Discover the range of services we offer.</p>
+</section>
+
+<section id="details" class="theme1">
+    <h2>More Details</h2>
+    <p>Here you can find more detailed information about our website.</p>
+</section>
+
+<section id="contact" class="theme2">
+    <h2>Contact Us</h2>
+    <p>Get in touch with us for inquiries and support.</p>
+</section>
+
+<script>
+    window.addEventListener('scroll', function () {
+        var navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) {
+            navbar.style.backgroundColor = '#555'; // Change background color on scroll
+        } else {
+            navbar.style.backgroundColor = '#333'; // Restore original background color
+        }
+    });
+
+    function changeTheme() {
+        var sections = document.querySelectorAll('section');
+        sections.forEach(function(section) {
+            if (section.classList.contains('theme1')) {
+                section.classList.remove('theme1');
+                section.classList.add('theme2');
+            } else if (section.classList.contains('theme2')) {
+                section.classList.remove('theme2');
+                section.classList.add('theme3');
+            } else if (section.classList.contains('theme3')) {
+                section.classList.remove('theme3');
+                section.classList.add('theme1');
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
